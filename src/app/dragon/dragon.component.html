@@ -1,0 +1,18 @@
+<mat-card *ngIf="dragon$ | async as dragon">
+  <mat-list-item>
+    <img matListAvatar style="width: 60px; height: 60px"
+      [src]="dragon.imageSource" [alt]="dragon.id">
+    <img matListAvatar style="margin-left: 16px;" 
+      [ngStyle]="{'visibility': (dragon.crowned ? 'visible' : 'hidden')}"
+      src="../assets/crown-token.png" alt="crown">
+    <h3 matLine>
+      {{dragon.name}}
+    </h3>
+    <div matLine>
+      <img style="width: 40px; cursor: pointer"
+        [src]="dragon.tokenSource" [alt]="dragon.id"
+        *ngFor="let x of dragon.nScales | times"
+        (click)="discardScale ()">
+    </div>
+  </mat-list-item>
+</mat-card>
